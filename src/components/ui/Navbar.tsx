@@ -49,7 +49,9 @@ export function Navbar({ links }: NavbarProps) {
             <span className="text-xs text-gray-500 hidden sm:block">
               {session?.user?.name} •{" "}
               <span className="text-indigo-600 font-medium capitalize">
-                {((session?.user as any)?.role || "").toLowerCase()}
+                {(session?.user as any)?.role === "SELLER"
+                  ? "user"
+                  : ((session?.user as any)?.role || "").toLowerCase()}
               </span>
             </span>
             <button

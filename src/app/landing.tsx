@@ -37,71 +37,40 @@ export default function LandingPage() {
               href="/auth/signup"
               className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all text-lg"
             >
-              Get Started (Join as Seller/User)
+              Get Started (Join as User)
             </Link>
           </div>
         </div>
 
         {/* Features Grid */}
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 mb-20">
-          {/* Buyers Card */}
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 mb-20">
+          {/* Users Card */}
           <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-200">
             <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
               <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">For Buyers</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">For Users</h3>
             <p className="text-gray-600 mb-4">
-              Discover verified suppliers, browse quality chemical products with detailed specifications, and manage your orders effortlessly.
+              Browse products with detailed descriptions, compare prices in different units, and place orders/quotations seamlessly.
             </p>
             <ul className="space-y-2 text-sm text-gray-700">
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
-                Browse multiple sellers
+                Browse and search chemicals
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
-                Compare prices easily
+                View prices across units (g, kg, mL, L, units)
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
-                Add to cart any quantity
+                Enter quantities in any supported unit
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
-                Track your orders
-              </li>
-            </ul>
-          </div>
-
-          {/* Sellers Card */}
-          <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-200">
-            <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">For Sellers</h3>
-            <p className="text-gray-600 mb-4">
-              List your chemical inventory, set competitive prices, manage stock levels, and reach qualified buyers instantly.
-            </p>
-            <ul className="space-y-2 text-sm text-gray-700">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-emerald-600 rounded-full"></span>
-                Easy product listing
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-emerald-600 rounded-full"></span>
-                Real-time inventory
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-emerald-600 rounded-full"></span>
-                Flexible pricing
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-emerald-600 rounded-full"></span>
-                Order management
+                Place orders/quotations with automated rate calculation
               </li>
             </ul>
           </div>
@@ -115,24 +84,24 @@ export default function LandingPage() {
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-2">For Admins</h3>
             <p className="text-gray-600 mb-4">
-              Monitor platform activity, verify sellers, oversee transactions, and ensure smooth operations across the entire network.
+              Manage product listings, configure base units, adjust pricing rates, and oversee system activity and order logs.
             </p>
             <ul className="space-y-2 text-sm text-gray-700">
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 bg-purple-600 rounded-full"></span>
-                Platform dashboard
+                Create, update, and soft-delete products
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 bg-purple-600 rounded-full"></span>
-                Seller verification
+                Configure base units and base prices
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 bg-purple-600 rounded-full"></span>
-                Transaction logs
+                View inventory levels across the system
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 bg-purple-600 rounded-full"></span>
-                Analytics & reports
+                Track quotations/orders and update status
               </li>
             </ul>
           </div>
@@ -146,11 +115,11 @@ export default function LandingPage() {
           </div>
           <div>
             <div className="text-4xl font-bold text-indigo-600 mb-2">50+</div>
-            <p className="text-gray-600">Verified Sellers</p>
+            <p className="text-gray-600">Verified Users</p>
           </div>
           <div>
             <div className="text-4xl font-bold text-indigo-600 mb-2">500+</div>
-            <p className="text-gray-600">Active Buyers</p>
+            <p className="text-gray-600">Active Users</p>
           </div>
         </div>
 
@@ -158,14 +127,14 @@ export default function LandingPage() {
         <div className="max-w-3xl mx-auto bg-gradient-to-r from-indigo-600 to-blue-600 rounded-2xl p-12 text-white text-center shadow-xl">
           <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
           <p className="text-lg mb-8 text-indigo-100">
-            Join thousands of buyers and sellers already using AasaMedChem. Sign up in less than 2 minutes.
+            Join thousands of users already using AasaMedChem. Sign up in less than 2 minutes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/auth/signup"
               className="px-8 py-3 bg-white text-indigo-600 hover:bg-indigo-50 font-semibold rounded-lg transition-colors"
             >
-              Sign Up as Seller/User
+              Sign Up as User
             </Link>
           </div>
         </div>
