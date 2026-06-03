@@ -34,16 +34,10 @@ export default function LandingPage() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/auth/signup?role=buyer"
+              href="/auth/signup"
               className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all text-lg"
             >
-              Join as Buyer
-            </Link>
-            <Link
-              href="/auth/signup?role=seller"
-              className="px-8 py-4 bg-white border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold rounded-xl shadow-md hover:shadow-lg transition-all text-lg"
-            >
-              Join as Seller
+              Get Started (Join as Seller/User)
             </Link>
           </div>
         </div>
@@ -168,16 +162,10 @@ export default function LandingPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/auth/signup?role=buyer"
+              href="/auth/signup"
               className="px-8 py-3 bg-white text-indigo-600 hover:bg-indigo-50 font-semibold rounded-lg transition-colors"
             >
-              I'm a Buyer
-            </Link>
-            <Link
-              href="/auth/signup?role=seller"
-              className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:bg-opacity-10 font-semibold rounded-lg transition-colors"
-            >
-              I'm a Seller
+              Sign Up as Seller/User
             </Link>
           </div>
         </div>

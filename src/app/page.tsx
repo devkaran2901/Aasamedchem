@@ -10,6 +10,5 @@ export default async function HomePage() {
 
   const role = (session.user as any).role;
   if (role === "ADMIN") redirect("/admin");
-  if (role === "BUYER") redirect("/buyer/browse");
   redirect("/seller/browse");
 }
