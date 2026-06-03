@@ -47,9 +47,12 @@ export async function GET(req: NextRequest) {
 // POST /api/products — create product (admin or seller)
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   const role = (session.user as any).role;
   
-  if (!session || !["ADMIN", "SELLER"].includes(role)) {
+  if (!["ADMIN", "SELLER"].includes(role)) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 

@@ -47,8 +47,9 @@ export default function BuyerBrowsePage() {
     setProducts(data);
 
     // Extract unique categories
-    const uniqueCategories = [...new Set(data.map((p: Product) => p.category).filter(Boolean))];
-    setCategories(uniqueCategories as string[]);
+    const categoriesList = data.map((p: Product) => p.category).filter(Boolean) as string[];
+    const uniqueCategories = categoriesList.filter((val, idx, self) => self.indexOf(val) === idx);
+    setCategories(uniqueCategories);
     setLoading(false);
   }
 
