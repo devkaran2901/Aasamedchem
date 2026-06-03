@@ -7,6 +7,7 @@ const SignupSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
+  role: z.enum(["BUYER", "SELLER"], { message: "Invalid role" }).optional().default("BUYER"),
 });
 
 export async function POST(req: NextRequest) {
@@ -21,7 +22,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { name, email, password } = parsed.data;
+    const { name, email, password, role } = parsed.data;
 
     // Check if user already exists
     const existingUser = await prisma.user.findUnique({
@@ -44,7 +45,7 @@ export async function POST(req: NextRequest) {
         name,
         email,
         passwordHash,
-        role: "SELLER", // New users are sellers by default
+        role: role as "BUYER" | "SELLER",
       },
       select: {
         id: true,

@@ -18,25 +18,66 @@ const OrderSchema = z.object({
 });
 
 // GET /api/orders
+// - For BUYER: their own orders
+// - For SELLER: orders containing their products
+// - For ADMIN: all orders
 export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const user = session.user as any;
   const isAdmin = user.role === "ADMIN";
+  const isSeller = user.role === "SELLER";
 
-  const orders = await prisma.order.findMany({
-    where: isAdmin ? {} : { userId: user.id },
-    include: {
-      user: { select: { name: true, email: true } },
-      items: {
-        include: {
-          product: { select: { name: true, sku: true, baseUnit: true } },
+  let orders;
+
+  if (isAdmin) {
+    orders = await prisma.order.findMany({
+      include: {
+        user: { select: { name: true, email: true, role: true } },
+        items: {
+          include: {
+            product: { select: { name: true, sku: true, baseUnit: true, seller: { select: { name: true, email: true } } } },
+          },
         },
       },
-    },
-    orderBy: { createdAt: "desc" },
-  });
+      orderBy: { createdAt: "desc" },
+    });
+  } else if (isSeller) {
+    // Get all orders that contain this seller's products
+    orders = await prisma.order.findMany({
+      where: {
+        items: {
+          some: {
+            product: { sellerId: user.id },
+          },
+        },
+      },
+      include: {
+        user: { select: { name: true, email: true } },
+        items: {
+          include: {
+            product: { select: { name: true, sku: true, baseUnit: true } },
+          },
+        },
+      },
+      orderBy: { createdAt: "desc" },
+    });
+  } else {
+    // BUYER: return their own orders
+    orders = await prisma.order.findMany({
+      where: { userId: user.id },
+      include: {
+        user: { select: { name: true, email: true } },
+        items: {
+          include: {
+            product: { select: { name: true, sku: true, baseUnit: true } },
+          },
+        },
+      },
+      orderBy: { createdAt: "desc" },
+    });
+  }
 
   return NextResponse.json(orders);
 }
